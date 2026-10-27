@@ -1,21 +1,64 @@
+/* General form layout styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+}
+
+form {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+input,
+select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 /* Hide error messages by default */
 .error-message {
   display: none;
-  font-size: 0.8rem;
-  color: red;
-  margin-left: 5px;
+  font-size: 0.85rem;
+  color: #d93838;
 }
 
-/* Show them only when the 'active' class is added */
+/* Show error messages when JavaScript adds the 'active' class */
 .error-message.active {
-  display: inline;
+  display: block;
 }
 
-/* Optional: Highlight input fields with red borders when invalid */
-input:invalid {
-  border: 2px solid red;
+/* Visual feedback directly on the input fields */
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown) {
+  border-color: #d93838;
+  background-color: #fdf2f2;
 }
 
-input:valid {
-  border: 2px solid green;
+input:valid:not(:placeholder-shown) {
+  border-color: #2e7d32;
+  background-color: #f4fbf4;
+}
+
+button {
+  padding: 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d4ed8;
 }
