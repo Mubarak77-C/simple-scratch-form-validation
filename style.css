@@ -1,0 +1,21 @@
+/* Hide error messages by default */
+.error-message {
+  display: none;
+  font-size: 0.8rem;
+  color: red;
+  margin-left: 5px;
+}
+
+/* Show them only when the 'active' class is added */
+.error-message.active {
+  display: inline;
+}
+
+/* Optional: Highlight input fields with red borders when invalid */
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+  border: 2px solid green;
+}
