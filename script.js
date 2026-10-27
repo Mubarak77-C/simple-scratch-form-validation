@@ -48,3 +48,17 @@ function showEmailError() {
   }
   emailError.className = "error-message active";
 }
+
+function validatePasswordMatch() {
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    // This marks the input as invalid and sets a custom error message
+    confirmPasswordInput.setCustomValidity("Passwords do not match!");
+  } else {
+    // Clear the custom error when they match (makes it valid again)
+    confirmPasswordInput.setCustomValidity("");
+  }
+}
+
+// Run the check whenever the user types in either password field
+passwordInput.addEventListener("input", validatePasswordMatch);
+confirmPasswordInput.addEventListener("input", validatePasswordMatch);
