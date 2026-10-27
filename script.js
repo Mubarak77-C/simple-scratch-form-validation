@@ -4,6 +4,10 @@ const passwordInput = document.querySelector("#password");
 const confirmPasswordInput = document.querySelector("#cpassword");
 const emailInput = document.querySelector("#email");
 const emailError = document.querySelector("#email-error");
+const countryInput = document.querySelector("#country");
+const zipInput = document.querySelector("#zip");
+const zipError = document.querySelector("#zip-error");
+
 // Optional: live check for passwords matching while typing
 confirmPasswordInput.addEventListener("input", () => {
   if (passwordInput.value !== confirmPasswordInput.value) {
@@ -49,6 +53,42 @@ function validatePasswordMatch() {
 // Run the check whenever the user types in either password field
 passwordInput.addEventListener("input", validatePasswordMatch);
 confirmPasswordInput.addEventListener("input", validatePasswordMatch);
+
+// 2. Zip Code Validation Logic based on Country
+const zipPatterns = {
+  us: [/^\d{5}(-\d{4})?$/, "US Zip Code must look like 12345 or 12345-6789"],
+  ca: [
+    /^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$/,
+    "Canadian Postal Code must look like A1A 1A1",
+  ],
+  uk: [
+    /^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/,
+    "UK Postal Code must be a valid format",
+  ],
+};
+
+function validateZip() {
+  const country = countryInput.value;
+  const constraint = zipPatterns[country];
+
+  if (!constraint) {
+    zipInput.setCustomValidity("Please select a country first.");
+    return;
+  }
+
+  const [pattern, errorMessage] = constraint;
+
+  if (pattern.test(zipInput.value)) {
+    zipInput.setCustomValidity("");
+    zipError.textContent = "";
+  } else {
+    zipInput.setCustomValidity(errorMessage);
+    zipError.textContent = errorMessage;
+  }
+}
+
+zipInput.addEventListener("input", validateZip);
+countryInput.addEventListener("change", validateZip);
 
 // Handle the form submission
 form.addEventListener("submit", (event) => {

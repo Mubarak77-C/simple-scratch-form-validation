@@ -8,39 +8,59 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>form VALIDATION</h1>
-    <form id="signup-form">
+    <h1>Form Validation</h1>
+
+    <form id="signup-form" novalidate>
+      <!-- Name -->
       <div>
         <label for="name">Name: </label>
         <input type="text" id="name" required /><br />
       </div>
 
+      <!-- Phone -->
       <div>
         <label for="ph_num">Phone No: </label>
-        <input
-          type="tel"
-          id="ph_num"
-          required
-          pattern="[0-9]{10}"
-          title="Must be 10 digits"
-        /><br />
+        <input type="tel" id="ph_num" required /><br />
       </div>
 
+      <!-- Email -->
       <div>
         <label for="email">Email: </label>
-        <input type="email" id="email" required /><br />
-        <span class="error-message" id="email-error"></span>
+        <input type="email" id="email" required />
+        <span class="error-message" id="email-error"></span><br />
       </div>
 
+      <!-- Country -->
+      <div>
+        <label for="country">Country: </label>
+        <select id="country" required>
+          <option value="">Please choose a country</option>
+          <option value="us">United States</option>
+          <option value="ca">Canada</option>
+          <option value="uk">United Kingdom</option>
+        </select>
+        <span class="error-message" id="country-error"></span><br />
+      </div>
+
+      <!-- Zip Code -->
+      <div>
+        <label for="zip">Zip Code: </label>
+        <input type="text" id="zip" required />
+        <span class="error-message" id="zip-error"></span><br />
+      </div>
+
+      <!-- Password -->
       <div>
         <label for="password">Password: </label>
         <input type="password" id="password" required minlength="6" /><br />
       </div>
 
+      <!-- Confirm Password -->
       <div>
         <label for="cpassword">Confirm Password: </label>
         <input type="password" id="cpassword" required /><br />
       </div>
+
       <button type="submit">Submit</button>
     </form>
   </body>
