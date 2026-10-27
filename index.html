@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM VALIDATION</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>form VALIDATION</h1>
+    <form action="get">
+      <label for="name">Name: </label>
+      <input type="text" name="text" id="text" /><br />
+
+      <label for="phone">Phone No: </label>
+      <input
+        type="number"
+        name="number"
+        id="ph_num"
+        required
+        minlength="10"
+      /><br />
+
+      <label for="email">Email: </label>
+      <input type="email" name="email" id="email" required /><br />
+
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" required /><br />
+
+      <label for="confirm_password">Confirm Password: </label>
+      <input type="password" name="cpass" id="cpassword" required /><br />
+
+      <input type="button" value="Submit" />
+    </form>
+  </body>
+</html>
