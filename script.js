@@ -1,32 +1,26 @@
 //console.log("h");
-const name = document.querySelector("#name");
-const phone = document.querySelector("#ph_num");
-const email = document.querySelector("#email");
-const password = document.querySelector("#password");
-const cpassword = document.querySelector("#cpassword");
-const btn = document.querySelector("button");
+const form = document.querySelector("#signup-form");
+const passwordInput = document.querySelector("#password");
+const confirmPasswordInput = document.querySelector("#cpassword");
 
-name.addEventListener("input", (event) => {
-  console.log("name typed, ", name.value);
-});
-
-phone.addEventListener("input", (event) => {
-  console.log("phone added");
-});
-
-email.addEventListener("input", (event) => {
-  console.log("email");
-});
-
-cpassword.addEventListener("input", (event) => {
-  console.log("pass");
-  if (password.value != cpassword.value) {
-    console.log("please confirm match password both");
+// Optional: live check for passwords matching while typing
+confirmPasswordInput.addEventListener("input", () => {
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    console.log("Passwords do not match yet...");
   } else {
-    console.log("password matched");
+    console.log("Passwords match!");
   }
 });
+// Handle the form submission
+form.addEventListener("submit", (event) => {
+  // Prevent the form from refreshing the page automatically
+  event.preventDefault();
 
-btn.addEventListener("click", (event) => {
-  console.log("submit");
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    alert("Error: Passwords must match!");
+    return;
+  }
+
+  console.log("Form submitted successfully!");
+  // Here you can send data or proceed further
 });

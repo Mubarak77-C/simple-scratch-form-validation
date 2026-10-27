@@ -9,29 +9,38 @@
   </head>
   <body>
     <h1>form VALIDATION</h1>
-    <form action="get">
-      <label for="name">Name: </label>
-      <input type="text" name="name" id="name" /><br />
+    <form id="signup-form">
+      <div>
+        <label for="name">Name: </label>
+        <input type="text" id="name" required /><br />
+      </div>
 
-      <label for="phone">Phone No: </label>
-      <input
-        type="number"
-        name="number"
-        id="ph_num"
-        required
-        minlength="10"
-      /><br />
+      <div>
+        <label for="ph_num">Phone No: </label>
+        <input
+          type="tel"
+          id="ph_num"
+          required
+          pattern="[0-9]{10}"
+          title="Must be 10 digits"
+        /><br />
+      </div>
 
-      <label for="email">Email: </label>
-      <input type="email" name="email" id="email" required /><br />
+      <div>
+        <label for="email">Email: </label>
+        <input type="email" id="email" required /><br />
+      </div>
 
-      <label for="password">Password: </label>
-      <input type="password" name="password" id="password" required /><br />
+      <div>
+        <label for="password">Password: </label>
+        <input type="password" id="password" required minlength="6" /><br />
+      </div>
 
-      <label for="confirm_password">Confirm Password: </label>
-      <input type="password" name="cpass" id="cpassword" required /><br />
-
-      <input type="button" value="Submit" />
+      <div>
+        <label for="cpassword">Confirm Password: </label>
+        <input type="password" id="cpassword" required /><br />
+      </div>
+      <button type="submit">Submit</button>
     </form>
   </body>
 </html>
