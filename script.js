@@ -12,19 +12,6 @@ confirmPasswordInput.addEventListener("input", () => {
     console.log("Passwords match!");
   }
 });
-// Handle the form submission
-form.addEventListener("submit", (event) => {
-  // Prevent the form from refreshing the page automatically
-  event.preventDefault();
-
-  if (passwordInput.value !== confirmPasswordInput.value) {
-    alert("Error: Passwords must match!");
-    return;
-  }
-
-  console.log("Form submitted successfully!");
-  // Here you can send data or proceed further
-});
 
 emailInput.addEventListener("input", () => {
   // Check if the input is valid based on HTML rules
@@ -62,3 +49,21 @@ function validatePasswordMatch() {
 // Run the check whenever the user types in either password field
 passwordInput.addEventListener("input", validatePasswordMatch);
 confirmPasswordInput.addEventListener("input", validatePasswordMatch);
+
+// Handle the form submission
+form.addEventListener("submit", (event) => {
+  // 1. Check if the entire form is valid using HTML's built-in method
+  if (!form.checkValidity()) {
+    // 2. Stop the form from submitting/refreshing
+    event.preventDefault();
+
+    alert("Please fix the errors in the form before submitting.");
+
+    // Optional: You can trigger your custom error display functions here
+    // for all fields so the user sees what's wrong immediately.
+  } else {
+    // 3. If valid, you can let it submit or handle it via JavaScript (like an API fetch)
+    event.preventDefault(); // Keep this if you aren't sending it to a backend server yet
+    alert("High five! Form submitted successfully!");
+  }
+});
